@@ -12,6 +12,6 @@
 ***○ Randomization: Learn how to generate random characters and strings.***<br>
 ***○ User Input Validation: Validate user input for password length and character types.***<br>
 ***○ Character Set Handling: Manage different character sets (letters, numbers, symbols).***<br>
-***○ GUI Design (for Advanced): Create an intuitive and user-friendly interface for password generation.***<br>
-***○ Security Rules (for Advanced): Implement rules for generating strong, secure passwords.***<br>
-***○ Customization (for Advanced): Enable users to customize password generation further, e.g., excluding specific characters.***<br>
+***○ GUI Design: Create an intuitive and user-friendly interface for password generation.***<br>
+***○ Security Rules: Implement rules for generating strong, secure passwords.***<br>
+***○ Customization: Enable users to customize password generation further, e.g., excluding specific characters.***<br>
