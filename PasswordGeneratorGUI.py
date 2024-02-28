@@ -48,7 +48,7 @@ def generate_pwd():
     # print(special_characters)
 
     password = []
-
+    alpha_n = num_n = special_n = 0
     # print("**********Let's Create a Custom Password For You !************")
 
     res_entry.delete(0, END)
@@ -60,68 +60,78 @@ def generate_pwd():
     except ValueError:
         messagebox.showerror(" ERROR", "Length Value must be numeric")
 
-    alpha_n = num_n = special_n = 0
-    while alpha_n + num_n + special_n != length:
-        try:
-            alpha_n = int(alp_entry.get())
-            if alpha_n > length:
-                raise Exception
-            num_n = int(num_entry.get())
-            if num_n > length:
-                raise Exception
-            special_n = int(special_entry.get())
-            if special_n > length:
-                raise Exception
-            if alpha_n + num_n + special_n != length:
-                messagebox.showwarning(" INPUT ERROR", "Total number of characters must be equal to selected length")
-        except ValueError:
-            messagebox.showerror(" INPUT ERROR", "values must be numeric")
-        except Exception:
-            messagebox.showerror(" INPUT ERROR", " entered value must be less than or equal to selected length")
-
+    # alpha_n = num_n = special_n = 0
+    # while alpha_n + num_n + special_n != length:
+    try:
+        alpha_n = int(alp_entry.get())
+        if alpha_n > length:
+            raise Exception
+        num_n = int(num_entry.get())
+        if num_n > length:
+            raise Exception
+        special_n = int(special_entry.get())
+        if special_n > length:
+            raise Exception
+        if alpha_n + num_n + special_n != length:
+            messagebox.showwarning(" INPUT ERROR", "Total number of characters must be equal to selected length")
+    except ValueError:
+        messagebox.showerror(" INPUT ERROR", "values must be numeric")
+    except Exception:
+        messagebox.showerror(" INPUT ERROR", " entered value must be less than or equal to selected length")
+    else:
     # adding random alphabet to the password
 
-    exclude = list(exc_entry.get().split())
+        exclude = list(exc_entry.get().split())
 
-    # loop to remove characters to be excluded
+        # loop to remove characters to be excluded
 
-    for i in exclude:
-        if i in letters:
-            letters.remove(i)
-        if i in numbers:
-            numbers.remove(i)
-        if i in special_characters:
-            special_characters.remove(i)
+        for i in exclude:
+            if i in letters:
+                letters.remove(i)
+            if i in numbers:
+                numbers.remove(i)
+            if i in special_characters:
+                special_characters.remove(i)
 
-    # loops to generate password
+        # loops to generate password
 
-    for i in range(alpha_n):
-        password += choice(letters)
-    # adding random digits to the password
-    for i in range(num_n):
-        password += choice(numbers)
-    # adding random special characters to the password
-    for i in range(special_n):
-        password += choice(special_characters)
+        for i in range(alpha_n):
+            password += choice(letters)
+        # adding random digits to the password
+        for i in range(num_n):
+            password += choice(numbers)
+        # adding random special characters to the password
+        for i in range(special_n):
+            password += choice(special_characters)
 
-    # print(password)
-    # shuffling the elements in the list randomly
-    shuffle(password)
-    # converting the list into string
-    result = ""
-    for i in password:
-        result += i
+        # print(password)
+        # shuffling the elements in the list randomly
+        shuffle(password)
+        # converting the list into string
+        result = ""
+        for i in password:
+            result += i
 
-    # print("*********************************************************************")
-    # print(f"Your Custom Generated Password is : {result}")
-    # print("*********************************************************************")
-    res_entry.insert(0, result)
+        # print("*********************************************************************")
+        # print(f"Your Custom Generated Password is : {result}")
+        # print("*********************************************************************")
+        res_entry.insert(0, result)
+
+
+def clear_values():
+    len_entry.delete(0, END)
+    alp_entry.delete(0, END)
+    num_entry.delete(0, END)
+    special_entry.delete(0, END)
+    exc_entry.delete(0, END)
+    res_entry.delete(0, END)
 
 
 # creating buttons
 gen_btn = Button(win, text="GENERATE", padx=10, pady=10, bg="#395886", fg="#8AaEE0", font=("Sans-serif", 12, "bold"),
                  command=generate_pwd)
-
+reset_btn = Button(win, text="RESET", padx=10, pady=10, bg="#395886", fg="#8AaEE0", font=("Sans-serif", 12, "bold"),
+                 command=clear_values)
 
 # placing widgets on the window
 title_label.grid(row=0, column=0, columnspan=2)
@@ -137,7 +147,8 @@ alp_entry.grid(row=2, column=1)
 num_entry.grid(row=3, column=1)
 special_entry.grid(row=4, column=1)
 exc_entry.grid(row=5, column=1)
-gen_btn.grid(row=6, columnspan=2)
+reset_btn.grid(row=6, column=0)
+gen_btn.grid(row=6, column=1)
 res_label.grid(row=7, column=0)
 res_entry.grid(row=7, column=1)
 
