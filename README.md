@@ -1,6 +1,6 @@
 ![image](https://github.com/Harshitha-Annam/OBSIP_TASKNO1/assets/161489017/2119bb1d-a551-466a-99ad-8f125cb061a1)
 
-# OIBSIP_TASKNO2
+# OIBSIP_TASKNO3
 ## Project Idea : Random Password Generator
 ### Project Description : 
 ***○ Creating a password generator in Python that generates random passwords based on user-defined criteria, such as length and character types (letters, numbers, symbols).***<br>
